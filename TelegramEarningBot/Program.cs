@@ -885,7 +885,7 @@ namespace TelegramEarningBot
                             var lastid = SQLDbOutPut("SendingPosts").Max(id => id[0]).Split(',');
                             post.Id = Convert.ToInt16(lastid[0]);
                             var wordToReplace = update.Message.Text?.Substring(entity.Offset, entity.Length);
-                            var redirectUrl = $"https://127.0.0.1:7202/c?id={post.Id}&userId={update.Message.From?.Id}";
+                            var redirectUrl = $"https://hyper-llink.ru:7202/c?id={post.Id}&userId={update.Message.From?.Id}";
                             var linkText = $"<a href=\"{redirectUrl}\">{wordToReplace}</a>";
                             //messageText = messageText?.Replace(wordToReplace, linkText);
                             var editedmessage = messageToSend;
@@ -929,7 +929,7 @@ namespace TelegramEarningBot
                             var lastid = SQLDbOutPut("SendingPosts").Max(id => id[0]).Split(',');
                             post.Id = Convert.ToInt16(lastid[0]);
                             var wordToReplace = update.Message.Caption?.Substring(entity.Offset, entity.Length);
-                            var redirectUrl = $"https://127.0.0.1:7202/c?id={post.Id}&userId={update.Message.From?.Id}";
+                            var redirectUrl = $"https://hyper-llink.ru:7202/c?id={post.Id}&userId={update.Message.From?.Id}";
                             var linkText = $"<a href=\"{redirectUrl}\">{wordToReplace}</a>";
                             //messageText = messageText?.Replace(wordToReplace, linkText);
                             var editedmessage = messageToSend;
