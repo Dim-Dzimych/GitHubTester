@@ -57,6 +57,7 @@ namespace TelegramEarningBot
                 cancellationToken
             );
             Console.ReadLine();
+            await Task.Delay(-1);
         }
 
         //TODO
