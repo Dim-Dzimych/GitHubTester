@@ -1153,6 +1153,6 @@ namespace TelegramEarningBot
                     break;
             }
         }
-        
+        await Task.Delay(-1)
     }
 }
