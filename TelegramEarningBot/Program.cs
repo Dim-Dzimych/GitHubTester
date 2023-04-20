@@ -385,7 +385,7 @@ namespace TelegramEarningBot
                 {
                     case "Да":
                     {
-                        if (_callBackData != null)
+                        if (_callBackData[1] == '-' && _callBackData[2] == '-')
                         {
                             _callBackData = _callBackData.Split("--")[1];
                             var postID = SQLDbOutPut("SendingPosts").Where(id => id[1] == _callBackData).ToList()[0][0];
