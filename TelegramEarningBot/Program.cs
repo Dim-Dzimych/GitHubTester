@@ -385,6 +385,7 @@ namespace TelegramEarningBot
                 {
                     case "Да":
                     {
+                        
                         if (_callBackData[1] == '-' && _callBackData[2] == '-')
                         {
                             _callBackData = _callBackData.Split("--")[1];
