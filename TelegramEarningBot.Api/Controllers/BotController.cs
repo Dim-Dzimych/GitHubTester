@@ -33,7 +33,6 @@ public class BotController : ControllerBase
         
         await _context.SaveChangesAsync();
         
-        Console.WriteLine($"{sendingPost.Link}");
         return Redirect(sendingPost.Link!);
     }
 
