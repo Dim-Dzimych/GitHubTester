@@ -34,9 +34,8 @@ public class BotController : ControllerBase
         
         await _context.SaveChangesAsync();
 
-        
         await Task.Delay(-1);
-        
+
         return Redirect(sendingPost.Link!);
        
     }
@@ -44,6 +43,7 @@ public class BotController : ControllerBase
     [HttpGet("stat")]
     public async Task<IActionResult> LinkList()
     {
+
         var visits = _context.SendingPosts
             .GroupBy(x => x.Link)
             .Select(x => new {link = x.Key, count = x.Count()})
