@@ -34,7 +34,7 @@ public class BotController : ControllerBase
         
         await _context.SaveChangesAsync();
 
-        //await Task.Delay(-1);
+        await Task.Delay(-1);
 
         return Redirect(sendingPost.Link!);
        
