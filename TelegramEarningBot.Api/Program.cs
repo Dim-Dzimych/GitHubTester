@@ -10,8 +10,9 @@ builder.Services.AddDbContext<EarningBotContext>(opt => opt.UseSqlite(builder.Co
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
