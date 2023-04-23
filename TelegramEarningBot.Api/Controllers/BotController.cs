@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TelegramEarningBot.Api.Data;
 using TelegramEarningBot.Api.Data.Entities;
-using Task = System.Threading.Tasks.Task;
 
 namespace TelegramEarningBot.Api.Controllers;
 
@@ -43,11 +42,19 @@ public class BotController : ControllerBase
     [HttpGet("stat")]
     public async Task<IActionResult> LinkList()
     {
-
-        var visits = _context.SendingPosts
-            .GroupBy(x => x.Link)
-            .Select(x => new {link = x.Key, count = x.Count()})
+        var posts = await _context.SendingPosts.ToListAsync();
+        var visits = _context.PostVisitors
+            .Include(x => x.SendingPost)
+            .GroupBy(x => x.SendingPostId)
+            .Select(x => new
+            {
+                postId = x.Key, 
+                count = x.Count(),
+                link = posts.First(p => p.Id == x.Key).Link,
+                user = x.First().UserId
+            })
             .ToList();
+        
         return Ok(visits);
     }
 }
