@@ -40,9 +40,8 @@ public class BotController : ControllerBase
     }
 
     [HttpGet("stat")]
-    public async Task<IActionResult> LinkList()
+    public IActionResult LinkList()
     {
-        var posts = await _context.SendingPosts.ToListAsync();
         var visits = _context.PostVisitors
             .Include(x => x.SendingPost)
             .GroupBy(x => x.SendingPostId)
@@ -50,11 +49,11 @@ public class BotController : ControllerBase
             {
                 postId = x.Key, 
                 count = x.Count(),
-                link = posts.First(p => p.Id == x.Key).Link,
-                user = x.First().UserId
+                pv = _context.PostVisitors.Include(pvi => pvi.SendingPost)
+                    .FirstOrDefault(p => p.SendingPostId == x.Key)
             })
             .ToList();
-        
+
         return Ok(visits);
     }
 }
