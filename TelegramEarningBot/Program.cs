@@ -92,6 +92,7 @@ namespace TelegramEarningBot
                     if (update.Message?.Text == null)
                     {
                         Console.WriteLine("Update was null");
+                        return;
                     }
                     else if (update.Message.Text.Contains("/start"))
                     {
